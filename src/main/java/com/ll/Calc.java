@@ -1,19 +1,28 @@
 package com.ll;
 
 public class Calc {
-  public static int run(String exp){
+  public static int run(String exp) {
 
-   String[] bits =  exp.split(" \\+ ");
-   int a = Integer.parseInt(bits[0]);
-   int b = Integer.parseInt(bits[1]);
+    boolean needToPlus = exp.contains("+");
+    boolean needToMinus = exp.contains("-");
 
-   return a + b;
+    String[] bits = null;
 
-    String[] bits2 = exp.split(" \\- ");
-    int c = Integer.parseInt(bits2[0]);
-    int d = Integer.parseInt(bits2[1]);
+    if (needToPlus) {
+      bits = exp.split(" \\+ ");
+    } else if (needToMinus) {
+      bits = exp.split(" - ");
+    }
 
-    return c - d;
+    int a = Integer.parseInt(bits[0]);
+    int b = Integer.parseInt(bits[1]);
+
+    if (needToPlus) {
+      return a + b;
+    } else if (needToMinus) {
+      return a - b;
+    }
+
+    throw new RuntimeException("처리할 수 있는 계산식이 아닙니다");
   }
 }
-
