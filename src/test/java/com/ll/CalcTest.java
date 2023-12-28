@@ -169,7 +169,7 @@ public class CalcTest {
   }
 
   @Test
-  @DisplayName("20 * (2 + 3) == 100")
+  @DisplayName("20 * (2 + 3) == 10")
   void t28() {
     assertThat(Calc.run("20 * (2 + 3)")).isEqualTo(100);
   }
